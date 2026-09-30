@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FISHING DATE SCANNER</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #000000;
+            color: rgb(255, 0, 0);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Moving stars */
+        .stars {
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(rgb(255, 7, 7) 1px, transparent 1px),
+                radial-gradient(rgb(255, 0, 0) 1px, transparent 1px);
+            background-size: 70px 70px, 120px 120px;
+            background-position: 0 0, 40px 60px;
+            animation: stars 15s linear infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes stars {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(120px);
+            }
+        }
+
+        .container {
+            position: relative;
+            width: 90%;
+            max-width: 600px;
+            padding: 35px;
+            text-align: center;
+            border: 2px solid #f75555;
+            border-radius: 25px;
+            background: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 0 40px #ce2222;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 42px;
+        }
+
+       .fish {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    margin: 20px auto;
+    display: block;
+    animation: fishFloat 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px #64ee2d69);
+}
+
+@keyframes fishFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(3deg);
+    }
+}
+        button {
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            background: #63f755;
+            color: rgb(255, 2, 2);
+            transition: 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.08);
+            background: #8efc84;
+        }
+
+        #result {
+            margin-top: 25px;
+            min-height: 60px;
+            font-size: 20px;
+        }
+
+        .warning {
+            color: #fa0000;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="stars"></div>
+
+    <div class="container">
+
+        <h1>FISHING TRIP DATE GENERATOR</h1>
+
+        <p>generating random date for fishing trip</p>
+
+        <img src="fish.png" class="fish" alt="Fish">
+
+        <button onclick="scanSnack()">
+            CLICK TO GENERATE DATE
+        </button>
+
+        <div id="result">
+            Scanner ready.
+        </div>
+
+        <div class="warning">
+            ⚠ Warning: THIS MAY BE RIGGED.
+            the creator of this site is not responsible for relationship issues. once a date is generated you cant take backsies 
+    
+        </div>
+
+    </div>
+
+    <script>
+
+        const snacks = [
+            "10TH",
+            "10TH",
+            "10TH",
+            "10TH",
+            "10TH",
+            "17TH",
+            "10TH",
+            "10TH",
+            "10TH",
+            "TOMORROW CALL IN SICK"
+        ];
+
+        function scanSnack() {
+
+    const result = document.getElementById("result");
+
+    result.innerHTML = "generating date...";
+
+    setTimeout(() => {
+
+        const randomSnack =
+            snacks[Math.floor(Math.random() * snacks.length)];
+
+        result.innerHTML =
+            " DATE LOCKED IN: <strong>" +
+            randomSnack +
+            "</strong>";
+
+    }, 1500);
+}
+    </script>
+
+</body>
+</html>
